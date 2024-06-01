@@ -8,25 +8,15 @@ const port = 3000;
 
 // MongoDB-ga ulanish
 mongoose
-  .connect("mongodb://127.0.0.1:27017/home-gardener", {
-    connectTimeoutMS: 10000,
-    socketTimeoutMS: 45000,
-  })
+  .connect(
+    "mongodb+srv://xushnud9812:ma8YtZ5vGYzRpvhH@cluster2.trlnhhx.mongodb.net/",
+    {
+      connectTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
+    }
+  )
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log("Error:", err));
-
-// Ulanish statusini tekshirish
-mongoose.connection.on("connected", () => {
-  console.log("Mongoose connected to db");
-});
-
-mongoose.connection.on("error", (err) => {
-  console.log(err.message);
-});
-
-mongoose.connection.on("disconnected", () => {
-  console.log("Mongoose connection is disconnected");
-});
 
 process.on("SIGINT", async () => {
   await mongoose.connection.close();
@@ -95,6 +85,15 @@ app.post("/edit/:id", async (req, res) => {
     res.redirect("/");
   } catch (err) {
     console.error("Error updating post:", err);
+    res.status(500).send("Server Error");
+  }
+});
+app.get("/delete/:id", async (req, res) => {
+  try {
+    await Post.findByIdAndDelete(req.params.id);
+    res.redirect("/");
+  } catch (err) {
+    console.error("Error deleting post:", err);
     res.status(500).send("Server Error");
   }
 });

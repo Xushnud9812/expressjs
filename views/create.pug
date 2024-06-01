@@ -1,30 +1,35 @@
 doctype html
 html
-    head
-        title Create Post
-    body
-        .navbar
-            div
-                a(href="/") Home Gardener
-        h1 Create New Post
-        form(action="/create" method="POST")
-            div
-                label(for="id") Post ID:
-                input(type="number" name="id" required)
-            div
-                label(for="author") Author:
-                input(type="text" name="author" required)
-            div
-                label(for="title") Title:
-                input(type="text" name="title" required)
-            div
-                label(for="plantsType") Plants Type:
-                select(name="plantsType" required)
-                    option(value="Vegetables") Vegetables
-                    option(value="Flowers") Flowers
-                    option(value="Herbs") Herbs
-            div
-                label(for="plantsVariety") Plants Variety:
-                input(type="text" name="plantsVariety" required)
-            div
-                button(type="submit") Add Post
+  head
+    title Create Post
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    style.
+      body {
+        background-color: #f8f9fa;
+      }
+      .container {
+        margin-top: 50px;
+      }
+  body
+    .container
+      .card
+        .card-header
+          h1.mb-4 Create New Post
+        .card-body
+          form(action='/create' method='POST')
+            .form-group
+              label(for='author') Author
+              input.form-control(type='text' name='author' placeholder='Enter author name' required)
+            .form-group
+              label(for='title') Title
+              input.form-control(type='text' name='title' placeholder='Enter post title' required)
+            .form-group
+              label(for='plantsType') Plants Type
+              input.form-control(type='text' name='plantsType' placeholder='Enter plants type' required)
+            .form-group
+              label(for='plantsVariety') Plants Variety
+              input.form-control(type='text' name='plantsVariety' placeholder='Enter plants variety' required)
+            button.btn.btn-primary.btn-block(type='submit') Add Post
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
