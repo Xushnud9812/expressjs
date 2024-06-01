@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title Edit Post
+    body
+        .navbar
+            div
+                a(href="/") Home Gardener
+        h1 Edit Post
+        form(action=`/edit/${post._id}` method="POST")
+            div
+                label(for="author") Author:
+                input(type="text" name="author" value=post.author)
+            div
+                label(for="title") Title:
+                input(type="text" name="title" value=post.title)
+            div
+                label(for="plantsType") Plants Type:
+                input(type="text" name="plantsType" value=post.plantsType)
+            div
+                label(for="plantsVariety") Plants Variety:
+                input(type="text" name="plantsVariety" value=post.plantsVariety)
+            div
+                button(type="submit") Save Changes

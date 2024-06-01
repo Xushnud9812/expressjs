@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Home Gardener Posts
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+      
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href="#") Home Gardener
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href="#") Posts
+          li.nav-item
+            a.nav-link(href="/create") Add Post
+    .container
+      h1.mb-4 Home Gardener Posts
+      .row
+       each post in posts
+        .col-6
+          .card.mb-4
+            .card-body
+              h5.card-title= post.title
+              p.card-text Author: #{post.author}
+              p.card-text Plants Type: #{post.plantsType}
+              p.card-text Plants Variety: #{post.plantsVariety}
+              a.btn.btn-primary(href=`/edit/${post._id}`) Edit
+              a.btn.btn-danger(href=`/delete/${post._id}`) Delete
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")

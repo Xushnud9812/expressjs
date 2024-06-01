@@ -1,0 +1,30 @@
+doctype html
+html
+    head
+        title Create Post
+    body
+        .navbar
+            div
+                a(href="/") Home Gardener
+        h1 Create New Post
+        form(action="/create" method="POST")
+            div
+                label(for="id") Post ID:
+                input(type="number" name="id" required)
+            div
+                label(for="author") Author:
+                input(type="text" name="author" required)
+            div
+                label(for="title") Title:
+                input(type="text" name="title" required)
+            div
+                label(for="plantsType") Plants Type:
+                select(name="plantsType" required)
+                    option(value="Vegetables") Vegetables
+                    option(value="Flowers") Flowers
+                    option(value="Herbs") Herbs
+            div
+                label(for="plantsVariety") Plants Variety:
+                input(type="text" name="plantsVariety" required)
+            div
+                button(type="submit") Add Post
